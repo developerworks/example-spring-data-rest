@@ -1,0 +1,1 @@
+## An demo of how to use spring boot data rest to develop a restful api service.
