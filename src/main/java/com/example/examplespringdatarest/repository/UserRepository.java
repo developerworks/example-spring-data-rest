@@ -4,9 +4,7 @@
 package com.example.examplespringdatarest.repository;
 
 import com.example.examplespringdatarest.entity.User;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -36,6 +34,22 @@ public interface UserRepository extends JpaRepository<User, Long> {
         @Param("username") @ApiParam(value = "用户名称", required = true) String username,
         Pageable pageable
     );
+
+    /**
+     * 覆盖父接口CrudRepository的save方法, 增加Springfox标注用于Swagger UI的显示
+     *
+     * @param user
+     * @return
+     */
+    @Override
+    @ApiResponses({
+        @ApiResponse(code = 201, message = "已创建", response = User.class),
+        @ApiResponse(code = 401, message = "未授权"),
+        @ApiResponse(code = 403, message = "禁止访问"),
+        @ApiResponse(code = 404, message = "资源不存在"),
+
+    })
+    User save(User user);
 
     /**
      * 屏蔽DELETE方法
