@@ -46,8 +46,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
         @ApiResponse(code = 201, message = "已创建", response = User.class),
         @ApiResponse(code = 401, message = "未授权"),
         @ApiResponse(code = 403, message = "禁止访问"),
-        @ApiResponse(code = 404, message = "资源不存在"),
-
+        @ApiResponse(code = 404, message = "资源不存在")
     })
     User save(User user);
 
