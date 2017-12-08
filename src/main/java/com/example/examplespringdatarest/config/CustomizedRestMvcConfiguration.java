@@ -21,6 +21,11 @@ public class CustomizedRestMvcConfiguration extends RepositoryRestMvcConfigurati
         return resolver;
     }
 
+    /**
+     * 暴露Swagger UI的静态支援地址
+     *
+     * @param registry
+     */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         super.addResourceHandlers(registry);

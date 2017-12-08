@@ -29,10 +29,10 @@ package com.example.examplespringdatarest.entity;
  * 需要一个中间的独立实体
  */
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlAttribute;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -42,10 +42,16 @@ public abstract class AbstractEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @ApiModelProperty(notes = "数据库生成的唯一标识")
     private Long id;
 
+    @ApiModelProperty(notes = "创建时间")
     private Long createdAt;
+
+    @ApiModelProperty(notes = "删除时间")
     private Long deletedAt;
+
+    @ApiModelProperty(notes = "更新时间")
     private Long updatedAt;
 
     /**
