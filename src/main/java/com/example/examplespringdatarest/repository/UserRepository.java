@@ -1,7 +1,4 @@
 /**
- * RequestMapping 不能注解在 Repository 上面.Repository 方法不能修改返回结果的格式(默认为JSON).
- * 如果需要服务返回XML格式的, 需要一个控制器来调用 Repository
- * <p>
  * https://reflectoring.io/documenting-spring-data-rest-api-with-springfox/
  */
 package com.example.examplespringdatarest.repository;
@@ -9,6 +6,7 @@ package com.example.examplespringdatarest.repository;
 import com.example.examplespringdatarest.entity.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,6 +20,11 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     /**
      * 分页查询以指定字符串开头的名字
+     * <p>
+     * 输入参数的名称和描述可以使用 @ApiParam 注解进行配置.
+     * 注意: 从Springfox 2.7.1开始阐述名称也会从Spring Data提供的@Param 注解进行读取.
+     * <p>
+     * 注意: 当前Springfox 的版本为2.7.0, 还需要等2.7.1发布才可以省略@ApiParam 注解, 否则无法自定义参数的说明.
      *
      * @param username
      * @param pageable
@@ -29,7 +32,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
      */
     @RestResource(path = "nameStartsWith", rel = "nameStartsWith")
     @ApiOperation("查找以字符串开头的用户名称")
-    Page<User> findByUsernameStartsWith(@Param("username") String username, Pageable pageable);
+    Page<User> findByUsernameStartsWith(
+        @Param("username") @ApiParam(value = "用户名称", required = true) String username,
+        Pageable pageable
+    );
 
     /**
      * 屏蔽DELETE方法

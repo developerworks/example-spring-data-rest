@@ -6,20 +6,21 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguratio
 import org.springframework.data.web.HateoasPageableHandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
 @EnableWebMvc
-public class CustomizedRestMvcConfiguration extends RepositoryRestMvcConfiguration {
+public class CustomizedRestMvcConfiguration extends WebMvcConfigurerAdapter {
 
-    @Override
-    @Bean
-    public HateoasPageableHandlerMethodArgumentResolver pageableResolver() {
-
-        HateoasPageableHandlerMethodArgumentResolver resolver = super.pageableResolver();
-//        resolver.setOneIndexedParameters(true);
-
-        return resolver;
-    }
+//    @Override
+//    @Bean
+//    public HateoasPageableHandlerMethodArgumentResolver pageableResolver() {
+//
+//        HateoasPageableHandlerMethodArgumentResolver resolver = super.pageableResolver();
+////        resolver.setOneIndexedParameters(true);
+//
+//        return resolver;
+//    }
 
     /**
      * 暴露Swagger UI的静态支援地址
@@ -28,7 +29,6 @@ public class CustomizedRestMvcConfiguration extends RepositoryRestMvcConfigurati
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        super.addResourceHandlers(registry);
         registry.addResourceHandler("swagger-ui.html")
                 .addResourceLocations("classpath:/META-INF/resources/");
 
