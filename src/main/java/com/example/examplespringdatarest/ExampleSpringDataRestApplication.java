@@ -25,7 +25,15 @@ public class ExampleSpringDataRestApplication {
         SpringApplication app = new SpringApplication(ExampleSpringDataRestApplication.class);
         /**
          * 应用生命周期事件监听器
+         *
+         * ➜ mvn spring-boot:run |grep o.s.context.ApplicationListener
+         * 2017-12-09 17:27:05.230  INFO 34792 --- [  restartedMain] o.s.context.ApplicationListener          : ApplicationEventEnvironmentPrepared
+         * 2017-12-09 17:27:05.340  INFO 34792 --- [  restartedMain] o.s.context.ApplicationListener          : ApplicationEventPrepared
+         * 2017-12-09 17:27:10.656  INFO 34792 --- [  restartedMain] o.s.context.ApplicationListener          : ApplicationEventReady
+         *
+         * 为什么注册了5个事件只触发了3个?
          */
+
         // 启动中
         app.addListeners(new ApplicationEventStarting());
         // 环境已准备好
