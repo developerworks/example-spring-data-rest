@@ -1,6 +1,6 @@
 package com.example.examplespringdatarest;
 
-import com.example.examplespringdatarest.listener.*;
+import com.example.examplespringdatarest.event.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
@@ -11,6 +11,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * https://itnext.io/building-microservices-with-spring-data-rest-40bb94080a9e
  * https://reflectoring.io/documenting-spring-data-rest-api-with-springfox/
  * http://www.jianshu.com/p/edd4cb960da7
+ * http://blog.csdn.net/cqdz_dj/article/details/52910317
  */
 @SpringBootApplication
 @EnableSwagger2
