@@ -35,16 +35,23 @@ public class ExampleSpringDataRestApplication {
          */
 
         // 启动中
+        // Spring boot启动开始时执行的事件
         app.addListeners(new ApplicationEventStarting());
+
         // 环境已准备好
+        // Spring boot 对应Enviroment已经准备完毕, 但此时上下文context还没有创建
         app.addListeners(new ApplicationEventEnvironmentPrepared());
-        // 启动失败
-        app.addListeners(new ApplicationEventFailed());
+
         // 已准备
+        // Spring boot上下文 Context 创建完成, 但此时spring中的bean是没有完全加载完成的
         app.addListeners(new ApplicationEventPrepared());
+
         // 应用程序已准备好接收请求
         app.addListeners(new ApplicationEventReady());
 
+        // 启动失败
+        // Spring boot启动异常时执行事件
+        app.addListeners(new ApplicationEventFailed());
         app.run(args);
 
     }
