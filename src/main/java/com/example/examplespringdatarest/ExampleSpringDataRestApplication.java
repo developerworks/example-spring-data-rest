@@ -10,6 +10,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 /**
  * https://itnext.io/building-microservices-with-spring-data-rest-40bb94080a9e
  * https://reflectoring.io/documenting-spring-data-rest-api-with-springfox/
+ * http://www.jianshu.com/p/edd4cb960da7
  */
 @SpringBootApplication
 @EnableSwagger2
